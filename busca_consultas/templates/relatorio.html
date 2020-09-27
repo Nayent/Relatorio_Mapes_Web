@@ -20,9 +20,9 @@
                 <td>{{i.nome_medico}}</td>
                 <td>{{i.numero_guia}}</td>
                 <td>{{i.data_consulta|date:"d/m/Y"}}</td>
-                <td>{{i.valor_consulta}}</td>
-                <td>Valor gasto por consulta</td>
-                <td>Qtde 123</td>
+                <td>{{i.valor_consulta|floatformat:2}}</td>
+                <td>{{i.gasto_consulta|floatformat:2}}</td>
+                <td>{{i.qtde_exames}}</td>
             </tr>
             {% endfor %}
             {% else %}

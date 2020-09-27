@@ -4,24 +4,9 @@ from busca_consultas.models import Consulta, Exame, Relatorio
 def index(request):
 
     relatorio = Relatorio.objects.order_by("-gasto_consulta").all()
-    consulta = Consulta.objects.order_by("numero_guia").all()
-    exame = Exame.objects.order_by("numero_guia_consulta").all()
-
-    valores = []
-    qtdes = []
-    for i in consulta:
-        valor = 0
-        qtde = 0
-        for j in i.exame_set.all():
-            qtde += 1
-            valor += j.valor_exame
-        valores.append(valor)
-        qtdes.append(qtde)
 
     consultas = {
-        "consulta" : consulta,
-        "valores" : valores,
-        "qtdes" : qtdes
+        "consulta" : relatorio,
     }
 
     #Criando lista de nomes ordenadas
@@ -39,7 +24,7 @@ def index(request):
 
 def relatorio(request):
 
-    busca_consulta = Consulta.objects.order_by('numero_guia').all()
+    busca_consulta = Relatorio.objects.order_by("-gasto_consulta").all()
 
     consultas = {
         "consulta" : busca_consulta

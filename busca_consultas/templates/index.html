@@ -20,8 +20,8 @@
                 <td>{{i.numero_guia}}</td>
                 <td>{{i.data_consulta|date:"d/m/Y"}}</td>
                 <td>{{i.valor_consulta|floatformat:2}}</td>
-                <td>test</td>
-                <td>Test1</td>
+                <td>{{i.gasto_consulta|floatformat:2}}</td>
+                <td>{{i.qtde_exames}}</td>
             </tr>
             {% endfor %}
         </tbody>
