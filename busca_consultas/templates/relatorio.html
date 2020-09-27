@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <table class="col-11 table ml-5">
+        <thead>
+            <tr>
+                <th scope="col">Nome do Médico</th>
+                <th scope="col">Número da Guia</th>
+                <th scope="col">Data da Consulta</th>
+                <th scope="col">Valor da Consulta</th>
+                <th scope="col">Gasto por Consulta</th>
+                <th scope="col">Qtde Exames</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if consulta %}
+            {% for i in consulta %}
+            <tr>
+                <td>{{i.nome_medico}}</td>
+                <td>{{i.numero_guia}}</td>
+                <td>{{i.data_consulta|date:"d/m/Y"}}</td>
+                <td>{{i.valor_consulta}}</td>
+                <td>Valor gasto por consulta</td>
+                <td>Qtde 123</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            {% endif %}
+        </tbody>
+    </table>
+
+{% endblock %}
