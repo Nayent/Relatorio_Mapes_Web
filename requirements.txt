@@ -18,7 +18,6 @@ Flask-Security-Too==3.4.2
 Flask-SQLAlchemy==2.1
 Flask-WTF==0.12
 gunicorn==20.0.4
-hidpidaemon==18.4.6
 htmlmin==0.1.12
 httplib2==0.14.0
 psycopg2==2.8.5
