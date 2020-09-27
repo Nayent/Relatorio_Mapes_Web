@@ -8,7 +8,7 @@ class ListandoExame(admin.ModelAdmin):
     list_display = ('id', 'numero_guia_consulta','exame')
 
 class ListandoRelatorio(admin.ModelAdmin):
-    list_display = ('nome_medico')
+    list_display = ('id','nome_medico')
 
 admin.site.register(Consulta, ListandoConsultas)
 admin.site.register(Exame, ListandoExame)
