@@ -1,20 +1,28 @@
 from django.shortcuts import render
 from busca_consultas.models import Consulta, Exame, Relatorio
 
+
+def listaNomes(consultas):
+    names = []
+    for i in consultas:
+        names.append(i.nome_medico)
+    
+    names = sorted(set(names))
+    return names
+
+def getRelatorio():
+    relatorio = Relatorio.objects.order_by("-gasto_consulta").all()
+    return relatorio
+
 def index(request):
 
-    relatorio = Relatorio.objects.order_by("-gasto_consulta").all()
+    relatorio = getRelatorio()
 
     consultas = {
         "consulta" : relatorio,
     }
 
-    #Criando lista de nomes ordenadas
-    names = []
-    for i in consultas["consulta"]:
-        names.append(i.nome_medico)
-    
-    names = sorted(set(names))
+    names = listaNomes(consultas["consulta"])
 
     consultas["nomes"] = names
 
@@ -24,18 +32,13 @@ def index(request):
 
 def relatorio(request):
 
-    busca_consulta = Relatorio.objects.order_by("-gasto_consulta").all()
+    busca_consulta = getRelatorio()
 
     consultas = {
         "consulta" : busca_consulta
     }
 
-    #Criando lista de nomes ordenadas
-    names = []
-    for i in consultas["consulta"]:
-        names.append(i.nome_medico)
-    
-    names = sorted(set(names))
+    names = listaNomes(consultas["consulta"])
 
     #Alternativas de pesquisa
     #Caso não seja preenchido nem nome nem data será mostrado todos os dados
